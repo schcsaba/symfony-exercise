@@ -10,42 +10,42 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Length;
 
-class RegisterType extends AbstractType
+class ChangePasswordType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('username', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'johndoe'
-                ],
-                'required' => true,
-                'constraints' => new Length([
-                    'min' => 3,
-                    'max' => 255
-                ])
+                'disabled' => true
             ])
-            ->add('password', RepeatedType::class, [
+            ->add('current_password', PasswordType::class, [
+                'label' => 'Current password',
+                'mapped' => false,
+                'attr' => [
+                    'placeholder' => 'Please enter your current password'
+                ]
+            ])
+            ->add('new_password', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'mapped' => false,
                 'invalid_message' => 'The password and the confirmation must be identical',
                 'required' => true,
                 'first_options' => [
-                    'label' => 'Password',
+                    'label' => 'New password',
                     'attr' => [
-                        'placeholder' => 'Please type your password'
+                        'placeholder' => 'Please type your new password'
                     ]
                 ],
                 'second_options' => [
-                    'label' => 'Confirm your password',
+                    'label' => 'Confirm your new password',
                     'attr' => [
-                        'placeholder' => 'Please confirm your password'
+                        'placeholder' => 'Please confirm your new password'
                     ]
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Register'
+                'label' => 'Change password'
             ])
         ;
     }
