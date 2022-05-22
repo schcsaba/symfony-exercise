@@ -1,3 +1,4 @@
+{% set route_name = app.request.attributes.get('_route') %}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -20,7 +21,10 @@
             {#            {{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
-    <body class="container">
+    <body class="d-flex flex-column min-vh-100">
+    {{ include('partials/_header.html.twig') }}
+    <main class="container mt-5">
         {% block body %}{% endblock %}
+    </main>
     </body>
 </html>

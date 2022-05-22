@@ -5,14 +5,10 @@
 {% block body %}
 <div class="row">
     <div class="col">
-        <h1>My account</h1>
-        <h2>Welcome!</h2>
+        <h1>Welcome in your account</h1>
         <p>You are logged in as {{ app.user.username }}.</p>
         <p>
-            <a href="{{ path('account_password') }}">Change password</a>
-        </p>
-        <p>
-            <a href="{{ path('app_logout') }}">Logout</a>
+            <a href="{{ path('profile_password') }}">Change password</a>
         </p>
     </div>
 </div>
