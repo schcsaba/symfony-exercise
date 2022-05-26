@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ProfileController extends AbstractController
 {
@@ -24,7 +25,7 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/profile", name="profile_index")
+     * @Route("/{_locale<%app.supported_locales%>}/profile", name="profile_index")
      */
     public function index(): Response
     {
@@ -32,9 +33,9 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/profile/change-password", name="profile_password")
+     * @Route("/{_locale<%app.supported_locales%>}/profile/change-password", name="profile_password")
      */
-    public function password(Request $request, UserPasswordHasherInterface $passwordHasher): Response
+    public function password(Request $request, UserPasswordHasherInterface $passwordHasher, TranslatorInterface $translator): Response
     {
         $notification = null;
         /** @var $user PasswordAuthenticatedUserInterface */
@@ -43,16 +44,16 @@ class ProfileController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $current_password = $form->get('current_password')->getData();
             if ($passwordHasher->isPasswordValid($user, $current_password)) {
                 $new_password = $form->get('new_password')->getData();
                 $password = $passwordHasher->hashPassword($user, $new_password);
                 $user->setPassword($password);
                 $this->entityManager->flush();
-                $notification = 'Your password has been updated.';
+                $notification = $translator->trans('account.password.updated');
             } else {
-                $notification = 'The current password you typed is not correct.';
+                $notification = $translator->trans('account.password.incorrect');
             }
         }
 

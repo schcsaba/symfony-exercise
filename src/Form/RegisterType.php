@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Component\Validator\Constraints\Length;
 
 class RegisterType extends AbstractType
@@ -18,8 +19,9 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
+                'label' => new TranslatableMessage('account.username'),
                 'attr' => [
-                    'placeholder' => 'johndoe'
+                    'placeholder' => new TranslatableMessage('johndoe')
                 ],
                 'required' => true,
                 'constraints' => new Length([
@@ -29,23 +31,22 @@ class RegisterType extends AbstractType
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password and the confirmation must be identical',
                 'required' => true,
                 'first_options' => [
-                    'label' => 'Password',
+                    'label' => new TranslatableMessage('account.password'),
                     'attr' => [
-                        'placeholder' => 'Please type your password'
+                        'placeholder' => new TranslatableMessage('account.password.new.cta')
                     ]
                 ],
                 'second_options' => [
-                    'label' => 'Confirm your password',
+                    'label' => new TranslatableMessage('account.password.confirm'),
                     'attr' => [
-                        'placeholder' => 'Please confirm your password'
+                        'placeholder' => new TranslatableMessage('account.password.confirm.cta')
                     ]
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Register'
+                'label' => new TranslatableMessage('account.register')
             ])
         ;
     }

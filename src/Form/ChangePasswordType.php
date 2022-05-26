@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Translation\TranslatableMessage;
 
 class ChangePasswordType extends AbstractType
 {
@@ -17,35 +18,35 @@ class ChangePasswordType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
+                'label' => new TranslatableMessage('account.username'),
                 'disabled' => true
             ])
             ->add('current_password', PasswordType::class, [
-                'label' => 'Current password',
+                'label' => new TranslatableMessage('account.password.current'),
                 'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Please enter your current password'
+                    'placeholder' => new TranslatableMessage('account.password.current.cta')
                 ]
             ])
             ->add('new_password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
-                'invalid_message' => 'The password and the confirmation must be identical',
                 'required' => true,
                 'first_options' => [
-                    'label' => 'New password',
+                    'label' => new TranslatableMessage('account.password.new'),
                     'attr' => [
-                        'placeholder' => 'Please type your new password'
+                        'placeholder' => new TranslatableMessage('account.password.new.cta')
                     ]
                 ],
                 'second_options' => [
-                    'label' => 'Confirm your new password',
+                    'label' => new TranslatableMessage('account.password.new.confirm'),
                     'attr' => [
-                        'placeholder' => 'Please confirm your new password'
+                        'placeholder' => new TranslatableMessage('account.password.new.confirm.cta')
                     ]
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Change password'
+                'label' => new TranslatableMessage('account.password.change')
             ])
         ;
     }

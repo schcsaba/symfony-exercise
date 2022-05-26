@@ -1,0 +1,27 @@
+account:
+    password: Password
+    my: 'My account'
+    logout: Logout
+    login: Login
+    register: Register
+    welcome: 'Welcome in your account'
+    loggedinas: 'You are logged in as'
+    login.cta: 'Log in!'
+    signin: 'Sign in'
+    username: Username
+    password.updated: 'Your password has been updated'
+    password.incorrect: 'The current password you typed is not correct'
+    password.change: 'Change your password'
+    signin.cta: 'Sign in!'
+    password.current: 'Current password'
+    password.current.cta: 'Please enter your current password'
+    password.new: 'New password'
+    password.new.cta: 'Please enter your new password'
+    password.new.confirm: 'Confirm your new password'
+    password.new.confirm.cta: 'Please confirm your new password'
+    password.confirm: 'Confirm your password'
+    password.confirm.cta: 'Please confirm your password'
+welcome: Welcome
+home:
+    title: Home
+johndoe: johndoe

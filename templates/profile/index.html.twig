@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}My account{% endblock %}
+{% block title %}{{ 'account.my'|trans }}{% endblock %}
 
 {% block body %}
-<div class="row">
-    <div class="col">
-        <h1>Welcome in your account</h1>
-        <p>You are logged in as {{ app.user.username }}.</p>
-        <p>
-            <a href="{{ path('profile_password') }}">Change password</a>
-        </p>
+    <div class="row">
+        <div class="col">
+            <h1>{{ 'account.welcome'|trans }}</h1>
+            <p>{{ 'account.loggedinas'|trans }} {{ app.user.username }}.</p>
+            <p>
+                <a href="{{ path('profile_password') }}">{{ 'account.password.change'|trans }}</a>
+            </p>
+        </div>
     </div>
-</div>
 {% endblock %}

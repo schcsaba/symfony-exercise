@@ -9,10 +9,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="home_index")
+     * @Route("/{_locale<%app.supported_locales%>}/", name="home_index")
      */
     public function index(): Response
     {
         return $this->render('home/index.html.twig');
+    }
+
+    /**
+     * @Route("/", name="home_index_nolocale")
+     */
+    public function indexNoLocale(): Response
+    {
+        return $this->redirectToRoute('home_index', ['_locale' => 'fr']);
     }
 }

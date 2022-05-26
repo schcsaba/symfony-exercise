@@ -24,7 +24,7 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="register_index")
+     * @Route("/{_locale<%app.supported_locales%>}/register", name="register_index")
      */
     public function index(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
