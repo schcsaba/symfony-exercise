@@ -3,19 +3,28 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use App\Form\RoleType;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Translation\TranslatableMessage;
 
-class UserCrudController extends AbstractCrudController
+class UserPasswordCrudController extends AbstractCrudController
 {
+    private UserPasswordHasherInterface $passwordHasher;
+
+    /**
+     * @param UserPasswordHasherInterface $passwordHasher
+     */
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
+
     public static function getEntityFqcn(): string
     {
         return User::class;
@@ -24,7 +33,7 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('username'),
+            TextField::new('username')->setDisabled(),
             Field::new('password')
                 ->setFormType(RepeatedType::class)
                 ->setFormTypeOptions([
@@ -43,22 +52,16 @@ class UserCrudController extends AbstractCrudController
                         ]
                     ]
                 ])
-                ->onlyWhenCreating(),
-            ChoiceField::new('roles')
-                ->setChoices([
-                    'Company' => 'ROLE_USER',
-                    'Admin' => 'ROLE_ADMIN',
-                ])
-                ->allowMultipleChoices(false)
-                ->renderExpanded()
-                ->setFormType(RoleType::class),
-            AssociationField::new('company')
         ];
     }
 
-    public function configureCrud(Crud $crud): Crud
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        return $crud
-            ->setEntityPermission('ROLE_ADMIN');
+        $pass = $entityInstance->getPassword();
+        $new_pass = $this->passwordHasher->hashPassword($entityInstance, $pass);
+
+        $entityInstance->setPassword($new_pass);
+        $entityManager->persist($entityInstance);
+        $entityManager->flush();
     }
 }
