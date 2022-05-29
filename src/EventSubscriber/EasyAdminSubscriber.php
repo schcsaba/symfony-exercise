@@ -5,10 +5,12 @@ namespace App\EventSubscriber;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * Based on https://grafikart.fr/forum/33951
+ */
 class EasyAdminSubscriber implements EventSubscriberInterface
 {
 
@@ -24,19 +26,8 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            BeforeEntityPersistedEvent::class => ['addUser'],
-            BeforeEntityUpdatedEvent::class => ['updateUser'], //surtout utile lors d'un reset de mot passe plutôt qu'un réel update, car l'update va de nouveau encrypter le mot de passe DEJA encrypté ...
+            BeforeEntityPersistedEvent::class => ['addUser']
         ];
-    }
-
-    public function updateUser(BeforeEntityUpdatedEvent $event): void
-    {
-        $entity = $event->getEntityInstance();
-
-        if (!($entity instanceof User)) {
-            return;
-        }
-        $this->setPassword($entity);
     }
 
     public function addUser(BeforeEntityPersistedEvent $event): void
@@ -55,13 +46,9 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public function setPassword(User $entity): void
     {
         $pass = $entity->getPassword();
+        $new_pass = $this->passwordHasher->hashPassword($entity, $pass);
 
-        $entity->setPassword(
-            $this->passwordHasher->hashPassword(
-                $entity,
-                $pass
-            )
-        );
+        $entity->setPassword($new_pass);
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
     }

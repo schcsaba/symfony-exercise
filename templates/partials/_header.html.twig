@@ -16,6 +16,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_logout') }}">{{ 'account.logout'|trans }}</a>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_COMPANY') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('admin') }}">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    {{ 'administration.admin'|trans }}
+                                {% else %}
+                                    {{ 'administration.company'|trans }}
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endif %}
                 {% else %}
                     <li class="nav-item">
                         <a {% if route_name == "app_login" %} class="nav-link active" {% else %} class="nav-link" {% endif %}
