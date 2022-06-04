@@ -25,3 +25,33 @@ welcome: Welcome
 home:
     title: Home
 johndoe: johndoe
+administration:
+    admin: Administration
+    company: 'Job offers'
+easyadmin:
+    dashboard: Dashboard
+    users: Users
+    users.passwords: 'User passwords'
+    companies: Companies
+    mycompany: 'My Company'
+    myprofile: 'My Profile'
+    mypassword: 'My password'
+    admin: Admin
+    admin.message: 'Welcome to the administration page of DevJobs. Please select from the menu on the left.'
+    company: Company
+    username: Username
+    user: User
+    password: 'Encrypted password'
+    user.password: 'User password'
+    roles: Roles
+    company.message: 'Welcome to the administration page of your company''s job offers. Please select from the menu on the left.'
+    company.name: 'Company name'
+    company.logo: Logo
+    company.logo.backgroundcolor: 'Logo background color'
+    company.town: Town
+    company.website: Website
+    company.contact.lastname: 'Contact lastname'
+    company.contact.firstname: 'Contact firstname'
+    company.contact.email: 'Contact email'
+    company.contact.phone: 'Contact phone'
+None: None

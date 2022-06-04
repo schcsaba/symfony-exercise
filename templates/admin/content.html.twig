@@ -1,0 +1,25 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ 'administration.admin'|trans }}
+    {% else %}
+        {{ 'administration.company'|trans }}
+    {% endif %}
+{% endblock %}
+
+{% block content_title %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ 'administration.admin'|trans }}
+    {% else %}
+        {{ 'administration.company'|trans }}
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <p>{{ 'easyadmin.admin.message'|trans }}</p>
+    {% else %}
+        <p>{{ 'easyadmin.company.message'|trans }}</p>
+    {% endif %}
+{% endblock %}

@@ -25,3 +25,33 @@ welcome: Bienvenue
 home:
     title: Accueil
 johndoe: jeandupont
+administration:
+    admin: Administration
+    company: 'Offres d''emploi'
+easyadmin:
+    dashboard: 'Tableau de bord'
+    users: Utilisateurs
+    users.passwords: 'Mots de passe des utilisateurs'
+    companies: Entreprises
+    mycompany: 'Mon entreprise'
+    myprofile: 'Mon Profil'
+    mypassword: 'Mon mot de passe'
+    admin: Admin
+    admin.message: 'Bienvenue sur la page d''administration de DevJobs. Veuillez choisir dans le menu à gauche.'
+    company: Entreprise
+    username: 'Nom d''utilisateur'
+    user: Utilisateur
+    password: 'Mot de passe chiffré'
+    user.password: 'Mot de passe d''utilisateur'
+    roles: Rôles
+    company.message: 'Bienvenue sur la page d''administration des offres d''emploi de votre entreprise. Veuillez choisir dans le menu à gauche.'
+    company.name: 'Nom de l''entreprise'
+    company.logo: Logo
+    company.logo.backgroundcolor: 'Couleur de fond du logo'
+    company.town: Ville
+    company.website: 'Site web'
+    company.contact.lastname: 'Nom du contact'
+    company.contact.firstname: 'Prénom du contact'
+    company.contact.email: 'Courriel du contact'
+    company.contact.phone: 'Téléphone du contact'
+Aucun(e): Aucun(e)
