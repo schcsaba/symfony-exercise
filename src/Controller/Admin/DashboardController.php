@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Company;
+use App\Entity\Offer;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -38,5 +39,7 @@ class DashboardController extends AbstractDashboardController
             ->setPermission('ROLE_ADMIN');
         $message = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.companies' : 'easyadmin.mycompany';
         yield MenuItem::linkToCrud(new TranslatableMessage($message), 'fas fa-building', Company::class);
+        $message = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.offers' : 'easyadmin.myoffers';
+        yield MenuItem::linkToCrud(new TranslatableMessage($message), 'fas fa-terminal', Offer::class);
     }
 }

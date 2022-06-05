@@ -52,4 +52,6 @@ easyadmin:
     company.contact.firstname: 'Prénom du contact'
     company.contact.email: 'Courriel du contact'
     company.contact.phone: 'Téléphone du contact'
+    offers: Offres
+    myoffers: 'Mes offres'
 Aucun(e): Aucun(e)
