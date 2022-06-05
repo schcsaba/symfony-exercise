@@ -85,11 +85,9 @@ class UserCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
-        $singular = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.user' : 'easyadmin.myprofile';
-        $plural = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.users' : 'easyadmin.myprofile';
         return $crud
-            ->setEntityLabelInSingular($singular)
-            ->setEntityLabelInPlural($plural)
+            ->setEntityLabelInSingular('easyadmin.user')
+            ->setEntityLabelInPlural('easyadmin.users')
             ->setEntityPermission('ADMIN_USER_EDIT');
     }
 

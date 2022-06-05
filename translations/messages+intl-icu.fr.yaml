@@ -34,8 +34,6 @@ easyadmin:
     users.passwords: 'Mots de passe des utilisateurs'
     companies: Entreprises
     mycompany: 'Mon entreprise'
-    myprofile: 'Mon Profil'
-    mypassword: 'Mon mot de passe'
     admin: Admin
     admin.message: 'Bienvenue sur la page d''administration de DevJobs. Veuillez choisir dans le menu à gauche.'
     company: Entreprise

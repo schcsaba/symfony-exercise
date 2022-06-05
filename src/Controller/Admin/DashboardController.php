@@ -30,12 +30,12 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard(new TranslatableMessage('easyadmin.dashboard'), 'fa fa-home');
-        $message = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.users' : 'easyadmin.myprofile';
-        yield MenuItem::linkToCrud(new TranslatableMessage($message), 'fas fa-user', User::class)
-            ->setController(UserCrudController::class);
-        $message = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.users.passwords' : 'easyadmin.mypassword';
-        yield MenuItem::linkToCrud(new TranslatableMessage($message), 'fas fa-key', User::class)
-            ->setController(UserPasswordCrudController::class);
+        yield MenuItem::linkToCrud(new TranslatableMessage('easyadmin.users'), 'fas fa-user', User::class)
+            ->setController(UserCrudController::class)
+            ->setPermission('ROLE_ADMIN');
+        yield MenuItem::linkToCrud(new TranslatableMessage('easyadmin.users.passwords'), 'fas fa-key', User::class)
+            ->setController(UserPasswordCrudController::class)
+            ->setPermission('ROLE_ADMIN');
         $message = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.companies' : 'easyadmin.mycompany';
         yield MenuItem::linkToCrud(new TranslatableMessage($message), 'fas fa-building', Company::class);
     }
