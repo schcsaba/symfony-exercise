@@ -63,7 +63,7 @@ class Company
     private $contactPhone;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="company", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="company")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

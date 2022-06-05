@@ -58,8 +58,10 @@ class UserCrudController extends AbstractCrudController
                 ])
                 ->allowMultipleChoices(false)
                 ->renderExpanded()
-                ->setFormType(RoleType::class),
+                ->setFormType(RoleType::class)
+                ->setPermission('ROLE_ADMIN'),
             AssociationField::new('company', new TranslatableMessage('easyadmin.company'))
+                ->setPermission('ROLE_ADMIN')
         ];
     }
 
@@ -76,6 +78,7 @@ class UserCrudController extends AbstractCrudController
         }
 
         $actions->setPermission(Action::NEW, 'ROLE_ADMIN');
+        $actions->setPermission(Action::DELETE, 'ROLE_ADMIN');
 
         return $actions;
     }
