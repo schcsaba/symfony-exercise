@@ -27,7 +27,7 @@ home:
 johndoe: johndoe
 administration:
     admin: Administration
-    company: 'Job offers'
+    company: 'Manage your job offers'
 easyadmin:
     dashboard: Dashboard
     users: Users

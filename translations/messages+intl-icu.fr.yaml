@@ -27,7 +27,7 @@ home:
 johndoe: jeandupont
 administration:
     admin: Administration
-    company: 'Offres d''emploi'
+    company: 'Gérez vos offres d''emploi'
 easyadmin:
     dashboard: 'Tableau de bord'
     users: Utilisateurs
