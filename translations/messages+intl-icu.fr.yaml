@@ -32,18 +32,18 @@ easyadmin:
     dashboard: 'Tableau de bord'
     users: Utilisateurs
     users.passwords: 'Mots de passe des utilisateurs'
-    companies: Entreprises
-    mycompany: 'Mon entreprise'
+    companies: Sociétés
+    mycompany: 'Ma société'
     admin: Admin
     admin.message: 'Bienvenue sur la page d''administration de DevJobs. Veuillez choisir dans le menu à gauche.'
-    company: Entreprise
+    company: Société
     username: 'Nom d''utilisateur'
     user: Utilisateur
     password: 'Mot de passe chiffré'
     user.password: 'Mot de passe d''utilisateur'
     roles: Rôles
-    company.message: 'Bienvenue sur la page d''administration des offres d''emploi de votre entreprise. Veuillez choisir dans le menu à gauche.'
-    company.name: 'Nom de l''entreprise'
+    company.message: 'Bienvenue sur la page d''administration des offres d''emploi de votre société. Veuillez choisir dans le menu à gauche.'
+    company.name: 'Nom de la société'
     company.logo: Logo
     company.logo.backgroundcolor: 'Couleur de fond du logo'
     company.town: Ville
