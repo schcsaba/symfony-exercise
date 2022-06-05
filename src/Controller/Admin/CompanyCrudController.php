@@ -90,6 +90,8 @@ class CompanyCrudController extends AbstractCrudController
             $actions->setPermission(Action::NEW, 'ROLE_ADMIN');
         }
 
+        $actions->setPermission(Action::SAVE_AND_ADD_ANOTHER, 'ROLE_ADMIN');
+
         return $actions;
     }
 
