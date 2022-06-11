@@ -54,4 +54,15 @@ easyadmin:
     company.contact.phone: 'Téléphone du contact'
     offers: Offres
     myoffers: 'Mes offres'
+    offer: Offre
+    myoffer: 'Mon Offre'
+    offer.title: Titre
+    offer.typeofcontract: 'Type de contrat'
+    offer.description: Description
+    offer.createdat: 'Publié le'
+    offer.profile.description: 'Description du profil'
+    offer.competencies: Compétences
+    offer.position.description: 'Description du poste'
+    offer.position.missions: Missions
+    offer.slug: Slug
 Aucun(e): Aucun(e)

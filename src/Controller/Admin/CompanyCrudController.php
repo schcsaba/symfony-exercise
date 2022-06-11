@@ -45,7 +45,8 @@ class CompanyCrudController extends AbstractCrudController
     {
         return [
             TextField::new('companyName', new TranslatableMessage('easyadmin.company.name')),
-            AssociationField::new('user', new TranslatableMessage('easyadmin.user'))->setPermission('ROLE_ADMIN'),
+            AssociationField::new('user', new TranslatableMessage('easyadmin.user'))
+                ->setPermission('ROLE_ADMIN'),
             ImageField::new('companyLogo', new TranslatableMessage('easyadmin.company.logo'))
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads')
