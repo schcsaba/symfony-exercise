@@ -65,4 +65,5 @@ easyadmin:
     offer.position.description: 'Position description'
     offer.position.missions: Missions
     offer.slug: Slug
+    candidates: Candidates
 None: None

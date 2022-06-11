@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Candidate;
 use App\Entity\Company;
 use App\Entity\Offer;
 use App\Entity\User;
@@ -41,5 +42,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud(new TranslatableMessage($message), 'fas fa-building', Company::class);
         $message = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.offers' : 'easyadmin.myoffers';
         yield MenuItem::linkToCrud(new TranslatableMessage($message), 'fas fa-terminal', Offer::class);
+        $message = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.candidates' : 'easyadmin.mycandidates';
+        yield MenuItem::linkToCrud(new TranslatableMessage($message), 'fas fa-users', Candidate::class);
     }
 }
