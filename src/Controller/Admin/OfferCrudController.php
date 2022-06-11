@@ -18,6 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -43,25 +44,28 @@ class OfferCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            FormField::addTab(new TranslatableMessage('easyadmin.offer.general')),
             AssociationField::new('company', new TranslatableMessage('easyadmin.company'))
                 ->setPermission('ROLE_ADMIN'),
             TextField::new('title', new TranslatableMessage('easyadmin.offer.title')),
+            SlugField::new('slug', new TranslatableMessage('easyadmin.offer.slug'))
+                ->setTargetFieldName('title'),
             ChoiceField::new('typeOfContract', new TranslatableMessage('easyadmin.offer.typeofcontract'))
                 ->renderExpanded()
                 ->setChoices([
-                    'Full Time' => 'full',
-                    'Part Time' => 'part',
-                    'Freelance' => 'freelance'
+                    'Full Time' => 'Full Time',
+                    'Part Time' => 'Part Time',
+                    'Freelance' => 'Freelance'
                 ]),
             TextareaField::new('description', new TranslatableMessage('easyadmin.offer.description')),
             DateTimeField::new('createdAt', new TranslatableMessage('easyadmin.offer.createdat'))
                 ->setPermission('ROLE_ADMIN'),
+            FormField::addTab(new TranslatableMessage('easyadmin.offer.profile')),
             TextareaField::new('profileDescription', new TranslatableMessage('easyadmin.offer.profile.description')),
             ArrayField::new('competencies', new TranslatableMessage('easyadmin.offer.competencies')),
+            FormField::addTab(new TranslatableMessage('easyadmin.offer.position')),
             TextareaField::new('positionDescription', new TranslatableMessage('easyadmin.offer.position.description')),
-            ArrayField::new('positionMissions', new TranslatableMessage('easyadmin.offer.position.missions')),
-            SlugField::new('slug', new TranslatableMessage('easyadmin.offer.slug'))
-                ->setTargetFieldName('title'),
+            ArrayField::new('positionMissions', new TranslatableMessage('easyadmin.offer.position.missions'))
         ];
     }
 
@@ -94,10 +98,9 @@ class OfferCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
-        $singular = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.offer' : 'easyadmin.myoffer';
         $plural = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.offers' : 'easyadmin.myoffers';
         return $crud
-            ->setEntityLabelInSingular($singular)
+            ->setEntityLabelInSingular('easyadmin.offer')
             ->setEntityLabelInPlural($plural)
             ->setEntityPermission('ADMIN_OFFER_EDIT');
     }

@@ -55,7 +55,6 @@ easyadmin:
     offers: Offers
     myoffers: 'My offers'
     offer: Offer
-    myoffer: 'My Offer'
     offer.title: Title
     offer.typeofcontract: 'Type of contract'
     offer.description: Description
@@ -66,4 +65,14 @@ easyadmin:
     offer.position.missions: Missions
     offer.slug: Slug
     candidates: Candidates
+    candidate: Candidate
+    candidate.firstname: Firstname
+    candidate.lastname: Lastname
+    candidate.phone: Phone
+    candidate.email: Email
+    candidate.cv: CV
+    candidate.offer: Offer
+    offer.general: 'General info'
+    offer.profile: Profile
+    offer.position: Position
 None: None
