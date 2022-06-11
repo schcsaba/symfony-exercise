@@ -62,6 +62,7 @@ class UserCrudController extends AbstractCrudController
                 ->setPermission('ROLE_ADMIN'),
             AssociationField::new('company', new TranslatableMessage('easyadmin.company'))
                 ->setPermission('ROLE_ADMIN')
+                ->setSortable(false)
         ];
     }
 
@@ -88,7 +89,8 @@ class UserCrudController extends AbstractCrudController
         return $crud
             ->setEntityLabelInSingular('easyadmin.user')
             ->setEntityLabelInPlural('easyadmin.users')
-            ->setEntityPermission('ADMIN_USER_EDIT');
+            ->setEntityPermission('ADMIN_USER_EDIT')
+            ->setSearchFields(['username', 'company.companyName']);
     }
 
     public function createIndexQueryBuilder(SearchDto $searchDto, EntityDto $entityDto, FieldCollection $fields, FilterCollection $filters): QueryBuilder

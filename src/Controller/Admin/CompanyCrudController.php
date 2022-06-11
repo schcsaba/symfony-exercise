@@ -52,7 +52,8 @@ class CompanyCrudController extends AbstractCrudController
                 ->setUploadDir('public/uploads')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false)
-                ->hideWhenCreating(),
+                ->hideWhenCreating()
+                ->hideOnIndex(),
             ImageField::new('companyLogo', new TranslatableMessage('easyadmin.company.logo'))
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads')
@@ -103,7 +104,17 @@ class CompanyCrudController extends AbstractCrudController
         return $crud
             ->setEntityLabelInSingular($singular)
             ->setEntityLabelInPlural($plural)
-            ->setEntityPermission('ADMIN_COMPANY_EDIT');
+            ->setEntityPermission('ADMIN_COMPANY_EDIT')
+            ->setSearchFields($this->isGranted('ROLE_ADMIN') ? [
+                'companyName',
+                'user.username',
+                'companyTown',
+                'companyWebsite',
+                'contactLastname',
+                'contactFirstname',
+                'contactEmail',
+                'contactPhone'
+            ] : null);
     }
 
     public function createIndexQueryBuilder(SearchDto $searchDto, EntityDto $entityDto, FieldCollection $fields, FilterCollection $filters): QueryBuilder

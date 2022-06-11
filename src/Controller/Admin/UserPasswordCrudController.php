@@ -43,6 +43,7 @@ class UserPasswordCrudController extends AbstractCrudController
         return [
             TextField::new('username', new TranslatableMessage('easyadmin.username'))->setDisabled(),
             Field::new('password', new TranslatableMessage('easyadmin.password'))
+                ->setSortable(false)
                 ->setFormType(RepeatedType::class)
                 ->setFormTypeOptions([
                     'type' => PasswordType::class,
@@ -85,7 +86,8 @@ class UserPasswordCrudController extends AbstractCrudController
         return $crud
             ->setEntityLabelInSingular('easyadmin.user.password')
             ->setEntityLabelInPlural('easyadmin.users.passwords')
-            ->setEntityPermission('ADMIN_USER_EDIT');
+            ->setEntityPermission('ADMIN_USER_EDIT')
+            ->setSearchFields(['username']);
     }
 
     public function createIndexQueryBuilder(SearchDto $searchDto, EntityDto $entityDto, FieldCollection $fields, FilterCollection $filters): QueryBuilder
