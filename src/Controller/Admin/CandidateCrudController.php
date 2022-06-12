@@ -35,7 +35,8 @@ class CandidateCrudController extends AbstractCrudController
             TextField::new('lastname', new TranslatableMessage('easyadmin.candidate.lastname')),
             TelephoneField::new('phone', new TranslatableMessage('easyadmin.candidate.phone')),
             EmailField::new('email', new TranslatableMessage('easyadmin.candidate.email')),
-            TextField::new('cv', new TranslatableMessage('easyadmin.candidate.cv')),
+            TextField::new('cv', new TranslatableMessage('easyadmin.candidate.cv'))
+                ->setTemplatePath('admin/field/candidate/detail/cv.html.twig'),
             AssociationField::new('offer', new TranslatableMessage('easyadmin.candidate.offer'))
         ];
     }
