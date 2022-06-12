@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Entity\Company;
 use App\Repository\CompanyRepository;
+use RuntimeException;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Xvladqt\Faker\LoremFlickrProvider;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -44,7 +45,7 @@ final class CompanyFactory extends ModelFactory
         self::faker()->addProvider(new LoremFlickrProvider(self::faker()));
         $path = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/';
         if (!file_exists($path) && !mkdir($path, 0777, true) && !is_dir($path)) {
-            throw new \RuntimeException(sprintf('Directory "%s" was not created', $path));
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $path));
         }
         return [
             'companyName' => self::faker()->company(),
