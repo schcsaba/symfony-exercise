@@ -563,6 +563,9 @@
     "webmozart/assert": {
         "version": "1.10.0"
     },
+    "xvladqt/faker-lorem-flickr": {
+        "version": "v1.0.0"
+    },
     "zenstruck/assert": {
         "version": "v1.0.1"
     },
