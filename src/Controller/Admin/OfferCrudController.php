@@ -62,7 +62,7 @@ class OfferCrudController extends AbstractCrudController
                 ->setPermission('ROLE_ADMIN'),
             FormField::addTab(new TranslatableMessage('easyadmin.offer.profile')),
             TextareaField::new('profileDescription', new TranslatableMessage('easyadmin.offer.profile.description')),
-            ArrayField::new('competencies', new TranslatableMessage('easyadmin.offer.competencies')),
+            ArrayField::new('competences', new TranslatableMessage('easyadmin.offer.competences')),
             FormField::addTab(new TranslatableMessage('easyadmin.offer.position')),
             TextareaField::new('positionDescription', new TranslatableMessage('easyadmin.offer.position.description')),
             ArrayField::new('positionMissions', new TranslatableMessage('easyadmin.offer.position.missions')),

@@ -60,7 +60,7 @@ easyadmin:
     offer.description: Description
     offer.createdat: 'Published at'
     offer.profile.description: 'Profile description'
-    offer.competencies: Competencies
+    offer.competences: Competencies
     offer.position.description: 'Position description'
     offer.position.missions: Missions
     offer.slug: Slug

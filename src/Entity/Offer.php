@@ -47,7 +47,7 @@ class Offer
     /**
      * @ORM\Column(type="array", nullable=true)
      */
-    private $competencies = [];
+    private $competences = [];
 
     /**
      * @ORM\Column(type="text")
@@ -145,14 +145,30 @@ class Offer
         return $this;
     }
 
-    public function getCompetencies(): ?array
+    public function getCompetences(): ?array
     {
-        return $this->competencies;
+        return $this->competences;
     }
 
-    public function setCompetencies(?array $competencies): self
+    public function setCompetences(?array $competences): self
     {
-        $this->competencies = $competencies;
+        $this->competences = $competences;
+
+        return $this;
+    }
+
+    public function addCompetence(string $competence): self
+    {
+        $this->competences[] = $competence;
+        return $this;
+    }
+
+    public function removeCompetence(string $competence): self
+    {
+        if (in_array($competence, $this->competences, true)) {
+            $key = array_search($competence, $this->competences, true);
+            unset($this->competences[$key]);
+        }
 
         return $this;
     }
@@ -177,6 +193,22 @@ class Offer
     public function setPositionMissions(?array $positionMissions): self
     {
         $this->positionMissions = $positionMissions;
+
+        return $this;
+    }
+
+    public function addPositionMission(string $mission): self
+    {
+        $this->positionMissions[] = $mission;
+        return $this;
+    }
+
+    public function removePositionMission(string $mission): self
+    {
+        if (in_array($mission, $this->positionMissions, true)) {
+            $key = array_search($mission, $this->positionMissions, true);
+            unset($this->positionMissions[$key]);
+        }
 
         return $this;
     }
