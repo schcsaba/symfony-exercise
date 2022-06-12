@@ -66,7 +66,7 @@ class CandidateCrudController extends AbstractCrudController
         }
 
         $queryBuilder
-            ->join(Offer::class, 'o')
+            ->join('entity.offer', 'o')
             ->andWhere('o.company = :company')
             ->setParameter('company', $this->getUser()->getCompany());
 

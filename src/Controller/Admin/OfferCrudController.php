@@ -57,15 +57,20 @@ class OfferCrudController extends AbstractCrudController
                     'Part Time' => 'Part Time',
                     'Freelance' => 'Freelance'
                 ]),
-            TextareaField::new('description', new TranslatableMessage('easyadmin.offer.description')),
+            TextareaField::new('description', new TranslatableMessage('easyadmin.offer.description'))
+                ->hideOnIndex(),
             DateTimeField::new('createdAt', new TranslatableMessage('easyadmin.offer.createdat'))
                 ->setPermission('ROLE_ADMIN'),
             FormField::addTab(new TranslatableMessage('easyadmin.offer.profile')),
-            TextareaField::new('profileDescription', new TranslatableMessage('easyadmin.offer.profile.description')),
-            ArrayField::new('competences', new TranslatableMessage('easyadmin.offer.competences')),
+            TextareaField::new('profileDescription', new TranslatableMessage('easyadmin.offer.profile.description'))
+                ->hideOnIndex(),
+            ArrayField::new('competences', new TranslatableMessage('easyadmin.offer.competences'))
+                ->hideOnIndex(),
             FormField::addTab(new TranslatableMessage('easyadmin.offer.position')),
-            TextareaField::new('positionDescription', new TranslatableMessage('easyadmin.offer.position.description')),
-            ArrayField::new('positionMissions', new TranslatableMessage('easyadmin.offer.position.missions')),
+            TextareaField::new('positionDescription', new TranslatableMessage('easyadmin.offer.position.description'))
+                ->hideOnIndex(),
+            ArrayField::new('positionMissions', new TranslatableMessage('easyadmin.offer.position.missions'))
+                ->hideOnIndex(),
             ArrayField::new('candidates', new TranslatableMessage('easyadmin.candidates'))
                 ->onlyOnDetail()
                 ->setTemplatePath('admin/field/offer/detail/candidates.html.twig'),
