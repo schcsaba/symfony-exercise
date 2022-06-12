@@ -3,9 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Candidate;
-use App\Entity\Company;
-use App\Entity\Offer;
-use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
