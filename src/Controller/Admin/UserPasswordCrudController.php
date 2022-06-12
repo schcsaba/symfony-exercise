@@ -77,6 +77,7 @@ class UserPasswordCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         $actions->disable(Action::NEW, Action::DELETE);
+        $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
 
         return $actions;
     }

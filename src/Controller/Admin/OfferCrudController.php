@@ -65,7 +65,12 @@ class OfferCrudController extends AbstractCrudController
             ArrayField::new('competencies', new TranslatableMessage('easyadmin.offer.competencies')),
             FormField::addTab(new TranslatableMessage('easyadmin.offer.position')),
             TextareaField::new('positionDescription', new TranslatableMessage('easyadmin.offer.position.description')),
-            ArrayField::new('positionMissions', new TranslatableMessage('easyadmin.offer.position.missions'))
+            ArrayField::new('positionMissions', new TranslatableMessage('easyadmin.offer.position.missions')),
+            ArrayField::new('candidates', new TranslatableMessage('easyadmin.candidates'))
+                ->onlyOnDetail()
+                ->setTemplatePath('admin/field/offer/detail/candidates.html.twig'),
+            AssociationField::new('candidates', new TranslatableMessage('easyadmin.candidates'))
+                ->onlyOnIndex()
         ];
     }
 
@@ -92,6 +97,8 @@ class OfferCrudController extends AbstractCrudController
         if (!$company && !$this->isGranted('ROLE_ADMIN')) {
             $actions->disable(Action::NEW);
         }
+
+        $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
 
         return $actions;
     }

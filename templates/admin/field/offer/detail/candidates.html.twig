@@ -1,0 +1,14 @@
+{% if field.value is not empty %}
+    {% for candidate in field.value %}
+        {% set candidateDetailUrl = ea_url()
+            .setController('App\\Controller\\Admin\\CandidateCrudController')
+            .setAction(constant('EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Action::DETAIL'))
+            .setEntityId(candidate.id)
+        %}
+        <a href="{{ candidateDetailUrl }}" style="display: block">
+            {{ candidate.firstname }} {{ candidate.lastname }} ({{ candidate.email }})
+        </a>
+    {% endfor %}
+{% else %}
+    No candidates
+{% endif %}

@@ -237,6 +237,6 @@ class Offer
 
     public function __toString()
     {
-        return $this->getTitle() . ' - ' . $this->getTypeOfContract() . ' (' . $this->getId() . ')';
+        return $this->getId() . ': ' . $this->getTitle() . ' - ' . $this->getTypeOfContract();
     }
 }

@@ -53,7 +53,8 @@ class CompanyCrudController extends AbstractCrudController
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false)
                 ->hideWhenCreating()
-                ->hideOnIndex(),
+                ->hideOnIndex()
+                ->hideOnDetail(),
             ImageField::new('companyLogo', new TranslatableMessage('easyadmin.company.logo'))
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads')
@@ -93,6 +94,7 @@ class CompanyCrudController extends AbstractCrudController
         }
 
         $actions->setPermission(Action::SAVE_AND_ADD_ANOTHER, 'ROLE_ADMIN');
+        $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
 
         return $actions;
     }

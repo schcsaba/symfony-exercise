@@ -43,6 +43,7 @@ class CandidateCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         $actions->disable(Action::NEW, Action::EDIT);
+        $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
 
         return $actions;
     }
