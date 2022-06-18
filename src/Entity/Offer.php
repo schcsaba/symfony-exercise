@@ -6,8 +6,46 @@ use App\Repository\OfferRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 
 /**
+ * @ApiResource(
+ *     collectionOperations={
+ *          "get"={
+ *              "normalization_context"={
+ *                  "groups"={"offer_listing:read"}
+ *              }
+ *          }
+ *     },
+ *     itemOperations={
+ *          "get"={
+ *              "normalization_context"={
+ *                  "groups"={"offer_detail:read"}
+ *              }
+ *          }
+ *     },
+ *     attributes={
+ *          "pagination_items_per_page"=12
+ *     }
+ * )
+ * @ApiFilter(SearchFilter::class, properties=
+ *     {
+ *     "title": "partial",
+ *     "description": "partial",
+ *     "profileDescription": "partial",
+ *     "competences": "partial",
+ *     "positionDescrition": "partial",
+ *     "positionMissions": "partial",
+ *     "company.companyTown": "partial"
+ *     }
+ * )
+ * @ApiFilter(BooleanFilter::class, properties={"isFullTime"})
+ * @ApiFilter(PropertyFilter::class)
  * @ORM\Entity(repositoryClass=OfferRepository::class)
  */
 class Offer
@@ -16,57 +54,68 @@ class Offer
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"offer_listing:read", "offer_detail:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"offer_listing:read", "offer_detail:read"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"offer_listing:read", "offer_detail:read"})
      */
     private $typeOfContract;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"offer_detail:read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Groups({"offer_listing:read", "offer_detail:read"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"offer_detail:read"})
      */
     private $profileDescription;
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @Groups({"offer_detail:read"})
      */
     private $competences = [];
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"offer_detail:read"})
      */
     private $positionDescription;
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @Groups({"offer_detail:read"})
      */
     private $positionMissions = [];
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"offer_detail:read"})
      */
     private $slug;
 
     /**
      * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="offers")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"offer_listing:read", "offer_detail:read"})
      */
     private $company;
 
@@ -74,6 +123,11 @@ class Offer
      * @ORM\OneToMany(targetEntity=Candidate::class, mappedBy="offer", orphanRemoval=true)
      */
     private $candidates;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isFullTime;
 
     public function __construct()
     {
@@ -270,5 +324,17 @@ class Offer
     public function __toString()
     {
         return $this->getId() . ': ' . $this->getTitle() . ' - ' . $this->getTypeOfContract();
+    }
+
+    public function isIsFullTime(): ?bool
+    {
+        return $this->isFullTime;
+    }
+
+    public function setIsFullTime(bool $isFullTime): self
+    {
+        $this->isFullTime = $isFullTime;
+
+        return $this;
     }
 }

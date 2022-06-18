@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Company;
+use App\Entity\Offer;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityDeletedEvent;
@@ -32,7 +33,8 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            BeforeEntityPersistedEvent::class => ['addUser'],
+            BeforeEntityPersistedEvent::class => [['addUser'], ['addOffer']],
+            BeforeEntityUpdatedEvent::class => ['updateOffer'],
             AfterEntityDeletedEvent::class => ['deleteCompany']
         ];
     }
@@ -70,6 +72,28 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         if (file_exists($imgpath)) {
             unlink($imgpath);
         }
+    }
+
+    public function addOffer(BeforeEntityPersistedEvent $event): void
+    {
+        $entity = $event->getEntityInstance();
+
+        if (!($entity instanceof Offer)) {
+            return;
+        }
+
+        $entity->setIsFullTime($entity->getTypeOfContract() === 'Full Time');
+    }
+
+    public function updateOffer(BeforeEntityUpdatedEvent $event): void
+    {
+        $entity = $event->getEntityInstance();
+
+        if (!($entity instanceof Offer)) {
+            return;
+        }
+
+        $entity->setIsFullTime($entity->getTypeOfContract() === 'Full Time');
     }
 
 }

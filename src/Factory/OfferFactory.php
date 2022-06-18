@@ -30,23 +30,21 @@ use Zenstruck\Foundry\Proxy;
  */
 final class OfferFactory extends ModelFactory
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     protected function getDefaults(): array
     {
+        $typeOfContract = self::faker()->randomElement(['Full Time', 'Part Time', 'Freelance']);
+        $isFullTime = $typeOfContract === 'Full Time';
         return [
             'title' => self::faker()->jobTitle(),
-            'typeOfContract' => self::faker()->randomElement(['Full Time', 'Part Time', 'Freelance']),
+            'typeOfContract' => $typeOfContract,
             'description' => self::faker()->paragraph(5),
             'createdAt' => DateTimeImmutable::createFromMutable(self::faker()->dateTimeThisMonth()),
             'profileDescription' => self::faker()->paragraph(4),
             'competences' => self::faker()->sentences(self::faker()->numberBetween(2, 8)),
             'positionDescription' => self::faker()->paragraph(4),
             'positionMissions' => self::faker()->sentences(self::faker()->numberBetween(2, 8)),
-            'company' => CompanyFactory::random()
+            'company' => CompanyFactory::random(),
+            'isFullTime' => $isFullTime
         ];
     }
 

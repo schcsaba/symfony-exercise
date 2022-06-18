@@ -5,6 +5,7 @@ namespace App\Factory;
 use App\Entity\Candidate;
 use App\Repository\CandidateRepository;
 use Fpdf\Fpdf;
+use RuntimeException;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
@@ -47,11 +48,11 @@ final class CandidateFactory extends ModelFactory
         $pdf->Cell(40,10,'CV');
         $path = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/';
         if (!file_exists($path) && !mkdir($path, 0777, true) && !is_dir($path)) {
-            throw new \RuntimeException(sprintf('Directory "%s" was not created', $path));
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $path));
         }
         $tmppath = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/tmp/';
         if (!file_exists($tmppath) && !mkdir($tmppath, 0777, true) && !is_dir($tmppath)) {
-            throw new \RuntimeException(sprintf('Directory "%s" was not created', $tmppath));
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $tmppath));
         }
         $pdf->Output(
             'F',

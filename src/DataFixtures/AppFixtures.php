@@ -53,6 +53,7 @@ class AppFixtures extends Fixture
         CompanyFactory::createMany(5);
         OfferFactory::createMany(20);
         CandidateFactory::createMany(30);
+        $this->rmrf($this->parameterBag->get('kernel.project_dir') . '/public/uploads/tmp/');
 
         $manager->flush();
     }
