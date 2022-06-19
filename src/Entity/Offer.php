@@ -310,7 +310,7 @@ class Offer
 
     public function __toString()
     {
-        return $this->getId() . ': ' . $this->getTitle() . ' - ' . $this->getTypeOfContract();
+        return $this->getTitle() . ' - ' . $this->getTypeOfContract();
     }
 
     public function isIsFullTime(): ?bool

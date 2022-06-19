@@ -32,39 +32,44 @@ use Zenstruck\Foundry\Proxy;
 final class CandidateFactory extends ModelFactory
 {
     private ParameterBagInterface $parameterBag;
+    private $tmpPath;
+    private $tmpFile;
 
     public function __construct(ParameterBagInterface $parameterBag)
     {
         parent::__construct();
 
         $this->parameterBag = $parameterBag;
+        $this->tmpPath = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/tmp/';
+        $this->tmpFile = $this->tmpPath . self::faker()->uuid() . '.pdf';
     }
 
     protected function getDefaults(): array
     {
+        $firstname = self::faker()->firstName();
+        $lastname = self::faker()->lastName();
         $pdf = new Fpdf();
         $pdf->AddPage();
         $pdf->SetFont('Arial','B',16);
-        $pdf->Cell(40,10,'CV');
+        $pdf->Cell(40,10,'CV: ' . $firstname . ' ' . $lastname);
         $path = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/';
         if (!file_exists($path) && !mkdir($path, 0777, true) && !is_dir($path)) {
             throw new RuntimeException(sprintf('Directory "%s" was not created', $path));
         }
-        $tmppath = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/tmp/';
-        if (!file_exists($tmppath) && !mkdir($tmppath, 0777, true) && !is_dir($tmppath)) {
-            throw new RuntimeException(sprintf('Directory "%s" was not created', $tmppath));
+        if (!file_exists($this->tmpPath) && !mkdir($this->tmpPath, 0777, true) && !is_dir($this->tmpPath)) {
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $this->tmpPath));
         }
         $pdf->Output(
             'F',
-            $tmppath . self::faker()->uuid() . '.pdf'
+            $this->tmpFile
         );
         return [
-            'firstname' => self::faker()->firstName(),
-            'lastname' => self::faker()->lastName(),
+            'firstname' => $firstname,
+            'lastname' => $lastname,
             'phone' => self::faker()->e164PhoneNumber(),
             'email' => self::faker()->safeEmail(),
             'cv' => self::faker()->file(
-                $tmppath,
+                $this->tmpPath,
                 $path,
                 false
             ),
@@ -75,9 +80,9 @@ final class CandidateFactory extends ModelFactory
     protected function initialize(): self
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
-        return $this
-            // ->afterInstantiate(function(Candidate $candidate): void {})
-        ;
+        return $this->afterInstantiate(function(Candidate $candidate): void {
+            unlink($this->tmpFile);
+        });
     }
 
     protected static function getClass(): string

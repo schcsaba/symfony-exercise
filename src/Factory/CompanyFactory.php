@@ -6,7 +6,6 @@ use App\Entity\Company;
 use App\Repository\CompanyRepository;
 use RuntimeException;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Xvladqt\Faker\LoremFlickrProvider;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -32,33 +31,42 @@ use Zenstruck\Foundry\Proxy;
 final class CompanyFactory extends ModelFactory
 {
     private ParameterBagInterface $parameterBag;
+    private $tmpPath;
+    private $tmpFile;
 
     public function __construct(ParameterBagInterface $parameterBag)
     {
         parent::__construct();
 
         $this->parameterBag = $parameterBag;
+        $this->tmpPath = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/tmp/';
+        $this->tmpFile = $this->tmpPath . self::faker()->uuid() . '.svg';
     }
+
+
 
     protected function getDefaults(): array
     {
-        self::faker()->addProvider(new LoremFlickrProvider(self::faker()));
+        $companyName = self::faker()->company();
         $path = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/';
         if (!file_exists($path) && !mkdir($path, 0777, true) && !is_dir($path)) {
             throw new RuntimeException(sprintf('Directory "%s" was not created', $path));
         }
+        if (!file_exists($this->tmpPath) && !mkdir($this->tmpPath, 0777, true) && !is_dir($this->tmpPath)) {
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $this->tmpPath));
+        }
+        $data = '<svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"><style>.heavy { font: bold 4px sans-serif; fill: white; }</style><text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" textLength="90%" lengthAdjust="spacingAndGlyphs" class="heavy">' . $companyName . '</text></svg>';
+        file_put_contents($this->tmpFile, $data);
         return [
-            'companyName' => self::faker()->company(),
-            'companyLogo' => self::faker()->image(
+            'companyName' => $companyName,
+            'companyLogo' => self::faker()->file(
+                $this->tmpPath,
                 $path,
-                150,
-                150,
-                ['companies, logos'],
                 false
             ),
             'companyLogoBackgroundColor' => self::faker()->hexColor(),
             'companyTown' => self::faker()->city(),
-            'companyWebsite' => self::faker()->url(),
+            'companyWebsite' => self::faker()->domainName(),
             'contactLastname' => self::faker()->lastName(),
             'contactFirstname' => self::faker()->firstName(),
             'contactEmail' => self::faker()->companyEmail(),
@@ -70,8 +78,9 @@ final class CompanyFactory extends ModelFactory
     protected function initialize(): self
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
-        return $this// ->afterInstantiate(function(Company $company): void {})
-            ;
+        return $this->afterInstantiate(function(Company $company): void {
+            unlink($this->tmpFile);
+        });
     }
 
     protected static function getClass(): string

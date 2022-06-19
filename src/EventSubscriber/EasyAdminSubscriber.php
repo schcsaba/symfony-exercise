@@ -2,6 +2,7 @@
 
 namespace App\EventSubscriber;
 
+use App\Entity\Candidate;
 use App\Entity\Company;
 use App\Entity\Offer;
 use App\Entity\User;
@@ -35,7 +36,7 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         return [
             BeforeEntityPersistedEvent::class => [['addUser'], ['addOffer']],
             BeforeEntityUpdatedEvent::class => ['updateOffer'],
-            AfterEntityDeletedEvent::class => ['deleteCompany']
+            AfterEntityDeletedEvent::class => [['deleteCompany'], ['deleteCandidate']]
         ];
     }
 
@@ -94,6 +95,18 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         }
 
         $entity->setIsFullTime($entity->getTypeOfContract() === 'Full Time');
+    }
+
+    public function deleteCandidate(AfterEntityDeletedEvent $event): void
+    {
+        $entity = $event->getEntityInstance();
+        if (!($entity instanceof Candidate)) {
+            return;
+        }
+        $cvpath = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/' . $entity->getCv();
+        if (file_exists($cvpath)) {
+            unlink($cvpath);
+        }
     }
 
 }
