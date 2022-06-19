@@ -38,7 +38,6 @@ final class OfferFactory extends ModelFactory
             'title' => self::faker()->jobTitle(),
             'typeOfContract' => $typeOfContract,
             'description' => self::faker()->paragraph(5),
-            'createdAt' => DateTimeImmutable::createFromMutable(self::faker()->dateTimeThisMonth()),
             'profileDescription' => self::faker()->paragraph(4),
             'competences' => self::faker()->sentences(self::faker()->numberBetween(2, 8)),
             'positionDescription' => self::faker()->paragraph(4),
@@ -52,12 +51,7 @@ final class OfferFactory extends ModelFactory
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
         return $this
-             ->afterInstantiate(function(Offer $offer): void {
-                 if (!$offer->getSlug()) {
-                     $slugger = new AsciiSlugger();
-                     $offer->setSlug($slugger->slug($offer->getTitle()));
-                 }
-             })
+             //->afterInstantiate(function(Offer $offer): void {})
         ;
     }
 

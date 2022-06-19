@@ -12,6 +12,8 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ApiResource(
@@ -50,6 +52,8 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  */
 class Offer
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -77,12 +81,6 @@ class Offer
     private $description;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
-     * @Groups({"offer_listing:read", "offer_detail:read"})
-     */
-    private $createdAt;
-
-    /**
      * @ORM\Column(type="text")
      * @Groups({"offer_detail:read"})
      */
@@ -107,8 +105,9 @@ class Offer
     private $positionMissions = [];
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Groups({"offer_detail:read"})
+     * @Gedmo\Slug(fields={"title"})
      */
     private $slug;
 
@@ -171,18 +170,6 @@ class Offer
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }

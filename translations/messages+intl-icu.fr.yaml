@@ -58,12 +58,10 @@ easyadmin:
     offer.title: Titre
     offer.typeofcontract: 'Type de contrat'
     offer.description: Description
-    offer.createdat: 'Publié le'
     offer.profile.description: 'Description du profil'
     offer.competences: Compétences
     offer.position.description: 'Description du poste'
     offer.position.missions: Missions
-    offer.slug: Slug
     candidates: Candidats
     candidate: Candidat
     candidate.firstname: Prénom
@@ -76,3 +74,9 @@ easyadmin:
     offer.profile: Profil
     offer.position: Poste
 Aucun(e): Aucun(e)
+Slug: Slug
+Full Time: 'Temps plein'
+Part Time: 'Temps partiel'
+Freelance: 'Freelance'
+Created At: 'Publié le'
+Updated At: 'Mis à jour à'

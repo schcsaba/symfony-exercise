@@ -17,9 +17,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\TranslatableMessage;
@@ -48,8 +47,9 @@ class OfferCrudController extends AbstractCrudController
             AssociationField::new('company', new TranslatableMessage('easyadmin.company'))
                 ->setPermission('ROLE_ADMIN'),
             TextField::new('title', new TranslatableMessage('easyadmin.offer.title')),
-            SlugField::new('slug', new TranslatableMessage('easyadmin.offer.slug'))
-                ->setTargetFieldName('title'),
+            Field::new('slug')
+                ->setDisabled()
+                ->hideOnForm(),
             ChoiceField::new('typeOfContract', new TranslatableMessage('easyadmin.offer.typeofcontract'))
                 ->renderExpanded()
                 ->setChoices([
@@ -59,8 +59,12 @@ class OfferCrudController extends AbstractCrudController
                 ]),
             TextareaField::new('description', new TranslatableMessage('easyadmin.offer.description'))
                 ->hideOnIndex(),
-            DateTimeField::new('createdAt', new TranslatableMessage('easyadmin.offer.createdat'))
-                ->setPermission('ROLE_ADMIN'),
+            Field::new('createdAt')
+                ->setDisabled()
+                ->hideOnForm(),
+            Field::new('updatedAt')
+                ->setDisabled()
+                ->hideOnForm(),
             FormField::addTab(new TranslatableMessage('easyadmin.offer.profile')),
             TextareaField::new('profileDescription', new TranslatableMessage('easyadmin.offer.profile.description'))
                 ->hideOnIndex(),
@@ -91,7 +95,6 @@ class OfferCrudController extends AbstractCrudController
         if ($company instanceof Company) {
             $offer->setCompany($company);
         }
-        $offer->setCreatedAt(new \DateTimeImmutable());
 
         return $offer;
     }
