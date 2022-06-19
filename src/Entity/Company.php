@@ -10,14 +10,6 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource(
- *     collectionOperations={"get"},
- *     itemOperations={"get"},
- *     normalizationContext={"groups"={"company_listing:read"}},
- *     attributes={
- *          "pagination_items_per_page"=12
- *     }
- * )
  * @ORM\Entity(repositoryClass=CompanyRepository::class)
  */
 class Company
@@ -32,55 +24,55 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"company_listing:read", "offer_listing:read", "offer_detail:read"})
+     * @Groups({"offer_listing:read", "offer_detail:read"})
      */
     private $companyName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"company_listing:read", "offer_listing:read", "offer_detail:read"})
+     * @Groups({"offer_listing:read", "offer_detail:read"})
      */
     private $companyLogo;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company_listing:read", "offer_listing:read", "offer_detail:read"})
+     * @Groups({"offer_listing:read", "offer_detail:read"})
      */
     private $companyLogoBackgroundColor;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"company_listing:read", "offer_listing:read", "offer_detail:read"})
+     * @Groups({"offer_listing:read", "offer_detail:read"})
      */
     private $companyTown;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company_listing:read", "offer_detail:read"})
+     * @Groups({"offer_detail:read"})
      */
     private $companyWebsite;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company_listing:read", "offer_detail:read"})
+     * @Groups({"offer_detail:read"})
      */
     private $contactLastname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company_listing:read", "offer_detail:read"})
+     * @Groups({"offer_detail:read"})
      */
     private $contactFirstname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company_listing:read", "offer_detail:read"})
+     * @Groups({"offer_detail:read"})
      */
     private $contactEmail;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company_listing:read", "offer_detail:read"})
+     * @Groups({"offer_detail:read"})
      */
     private $contactPhone;
 
