@@ -3,41 +3,65 @@
 {% block title %}{{ offer.title }}{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-12">
-            <h1>{{ 'offer.title'|trans }}</h1>
+    <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOffer"
+                aria-expanded="false" aria-controls="collapseOffer">
+            {{ 'offer.show'|trans }}
+        </button>
+    </p>
+    <div class="collapse" id="collapseOffer">
+        <div class="row border-bottom border-primary">
+            <div class="col-6 col-lg-2 mx-auto">
+                <img style="background-color: {{ offer.company.companyLogoBackgroundColor }}"
+                     class="card-img-top img-fluid" src="{{ asset("uploads/#{offer.company.companyLogo}") }}"
+                     alt="Company logo">
+            </div>
+            <div class="col-12 col-lg-10">
+                <h2 class="display-6">{{ 'easyadmin.company'|trans }}{{ 'offer.colon'|trans }} {{ offer.company }}</h2>
+                <ul class="list-group list-group-horizontal-sm">
+                    <li class="list-group-item">
+                        <h3>{{ 'easyadmin.company.website'|trans }}</h3>
+                        <p>{{ offer.company.companyWebsite | replace({'https://' : '', 'https://www.' : '', 'http://' : ''}) | trim('/') }}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h3>{{ 'offer.createdat'|trans }}</h3>
+                        <p>{{ offer.createdAt|format_datetime('full', 'none', locale=app.request.attributes.get('_locale')) }}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h3>{{ 'easyadmin.offer.typeofcontract'|trans }}</h3>
+                        <p>{{ offer.typeOfContract }}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h3>{{ 'easyadmin.company.town'|trans }}</h3>
+                        <p>{{ offer.company.companyTown }}</p>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-2">
-            <img style="background-color: {{ offer.company.companyLogoBackgroundColor }}"
-                 class="card-img-top img-fluid" src="{{ asset("uploads/#{offer.company.companyLogo}") }}"
-                 alt="Company logo">
-        </div>
-        <div class="col-10">
-            <h2>{{ offer.company }}</h2>
-            <p>{{ offer.company.companyWebsite | replace({'https://' : '', 'https://www.' : '', 'http://' : ''}) | trim('/') }}</p>
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4">{{ offer.title }}</h1>
+                <p>{{ offer.description }}</p>
+                <h3>{{ 'offer.requirements'|trans }}</h3>
+                <p>{{ offer.profileDescription }}</p>
+                <ul>
+                    {% for competence in offer.competences %}
+                        <li>{{ competence }}</li>
+                    {% endfor %}
+                </ul>
+                <h3>{{ 'offer.whatyouwilldo'|trans }}</h3>
+                <p>{{ offer.positionDescription }}</p>
+                <ol>
+                    {% for mission in offer.positionMissions %}
+                        <li>{{ mission }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <p>{{ offer.createdAt|format_datetime('full', 'none', locale=app.request.attributes.get('_locale')) }}</p>
-            <p>{{ offer.typeOfContract }}</p>
-            <p>{{ offer.title() }}</p>
-            <p>{{ offer.company.companyTown }}</p>
-            <p>{{ offer.description }}</p>
-            <h3>Requirements</h3>
-            <p>{{ offer.profileDescription }}</p>
-            <ul>
-                {% for competence in offer.competences %}
-                    <li>{{ competence }}</li>
-                {% endfor %}
-            </ul>
-            <h3>What You Will Do</h3>
-            <p>{{ offer.positionDescription }}</p>
-            <ol>
-                {% for mission in offer.positionMissions %}
-                    <li>{{ mission }}</li>
-                {% endfor %}
-            </ol>
+        <div class="col-sm-6">
+            {{ form(form) }}
         </div>
     </div>
 {% endblock %}

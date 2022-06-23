@@ -1,82 +1,95 @@
 account:
-    password: Password
-    my: 'My account'
-    logout: Logout
-    login: Login
-    register: Register
-    welcome: 'Welcome in your account'
-    loggedinas: 'You are logged in as'
-    login.cta: 'Log in!'
-    signin: 'Sign in'
-    username: Username
-    password.updated: 'Your password has been updated'
-    password.incorrect: 'The current password you typed is not correct'
-    password.change: 'Change your password'
-    signin.cta: 'Sign in!'
-    password.current: 'Current password'
-    password.current.cta: 'Please enter your current password'
-    password.new: 'New password'
-    password.new.cta: 'Please enter your new password'
-    password.new.confirm: 'Confirm your new password'
-    password.new.confirm.cta: 'Please confirm your new password'
-    password.confirm: 'Confirm your password'
-    password.confirm.cta: 'Please confirm your password'
+  password: Password
+  my: 'My account'
+  logout: Logout
+  login: Login
+  register: Register
+  welcome: 'Welcome in your account'
+  loggedinas: 'You are logged in as'
+  login.cta: 'Log in!'
+  signin: 'Sign in'
+  username: Username
+  password.updated: 'Your password has been updated'
+  password.incorrect: 'The current password you typed is not correct'
+  password.change: 'Change your password'
+  signin.cta: 'Sign in!'
+  password.current: 'Current password'
+  password.current.cta: 'Please enter your current password'
+  password.new: 'New password'
+  password.new.cta: 'Please enter your new password'
+  password.new.confirm: 'Confirm your new password'
+  password.new.confirm.cta: 'Please confirm your new password'
+  password.confirm: 'Confirm your password'
+  password.confirm.cta: 'Please confirm your password'
 welcome: Welcome
 home:
-    title: Home
+  title: 'DevJobs Administration Site'
+  message: 'Please log in to manage your job offers.'
+  message.admin: 'Click on Administration to manage the DevJobs website. In the My account menu you can change your password.'
+  message.company: 'Click on Manage your job offers to manage the job offers of your company. In the My account menu you can change your password.'
 johndoe: johndoe
 administration:
-    admin: Administration
-    company: 'Manage your job offers'
+  admin: Administration
+  company: 'Manage your job offers'
 easyadmin:
-    dashboard: Dashboard
-    users: Users
-    users.passwords: 'User passwords'
-    companies: Companies
-    mycompany: 'My Company'
-    admin: Admin
-    admin.message: 'Welcome to the administration page of DevJobs. Please select from the menu on the left.'
-    company: Company
-    username: Username
-    user: User
-    password: 'Encrypted password'
-    user.password: 'User password'
-    roles: Roles
-    company.message: 'Welcome to the administration page of your company''s job offers. Please select from the menu on the left.'
-    company.name: 'Company name'
-    company.logo: Logo
-    company.logo.backgroundcolor: 'Logo background color'
-    company.town: Town
-    company.website: Website
-    company.contact.lastname: 'Contact lastname'
-    company.contact.firstname: 'Contact firstname'
-    company.contact.email: 'Contact email'
-    company.contact.phone: 'Contact phone'
-    offers: Offers
-    myoffers: 'My offers'
-    offer: Offer
-    offer.title: Title
-    offer.typeofcontract: 'Type of contract'
-    offer.description: Description
-    offer.profile.description: 'Profile description'
-    offer.competences: Competencies
-    offer.position.description: 'Position description'
-    offer.position.missions: Missions
-    candidates: Candidates
-    candidate: Candidate
-    candidate.firstname: Firstname
-    candidate.lastname: Lastname
-    candidate.phone: Phone
-    candidate.email: Email
-    candidate.cv: CV
-    candidate.offer: Offer
-    offer.general: 'General info'
-    offer.profile: Profile
-    offer.position: Position
+  dashboard: Dashboard
+  users: Users
+  users.passwords: 'User passwords'
+  companies: Companies
+  mycompany: 'My Company'
+  admin: Admin
+  admin.message: 'Welcome to the administration page of DevJobs. Please select from the menu on the left.'
+  company: Company
+  username: Username
+  user: User
+  password: 'Encrypted password'
+  user.password: 'User password'
+  roles: Roles
+  company.message: 'Welcome to the administration page of your company''s job offers. Please select from the menu on the left.'
+  company.name: 'Company name'
+  company.logo: Logo
+  company.logo.backgroundcolor: 'Logo background color'
+  company.town: Town
+  company.website: Website
+  company.contact.lastname: 'Contact lastname'
+  company.contact.firstname: 'Contact firstname'
+  company.contact.email: 'Contact email'
+  company.contact.phone: 'Contact phone'
+  offers: Offers
+  myoffers: 'My offers'
+  offer: Offer
+  offer.title: Title
+  offer.typeofcontract: 'Type of contract'
+  offer.description: Description
+  offer.profile.description: 'Profile description'
+  offer.competences: Competencies
+  offer.position.description: 'Position description'
+  offer.position.missions: Missions
+  candidates: Candidates
+  candidate: Candidate
+  candidate.firstname: Firstname
+  candidate.lastname: Lastname
+  candidate.phone: Phone
+  candidate.email: Email
+  candidate.cv: CV
+  candidate.offer: Offer
+  offer.general: 'General info'
+  offer.profile: Profile
+  offer.position: Position
 None: None
 Slug: Slug
-Full Time: 'Full Time'
-Part Time: 'Part Time'
-Freelance: 'Freelance'
-Created At: 'Published at'
-Updated At: 'Updated at'
+'Full Time': 'Full Time'
+'Part Time': 'Part Time'
+Freelance: Freelance
+'Created At': 'Published at'
+'Updated At': 'Updated at'
+offer:
+  colon: ':'
+  createdat: 'Published at'
+  requirements: Requirements
+  whatyouwilldo: 'What You Will Do'
+  show: 'Toggle offer'
+candidate:
+  send: 'Send application'
+  success: 'Application sent'
+  success.message: 'Your application has been sent successfully'

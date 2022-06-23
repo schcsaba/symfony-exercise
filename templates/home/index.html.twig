@@ -4,4 +4,13 @@
 
 {% block body %}
     <h1>{{ 'home.title'|trans }}</h1>
+    {% if is_granted('ROLE_USER') %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <p>{{ 'home.message.admin'|trans }}</p>
+        {% else %}
+            <p>{{ 'home.message.company'|trans }}</p>
+        {% endif %}
+    {% else %}
+        <p>{{ 'home.message'|trans }}</p>
+    {% endif %}
 {% endblock %}

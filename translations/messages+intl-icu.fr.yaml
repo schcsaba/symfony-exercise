@@ -1,82 +1,95 @@
 account:
-    password: 'Mot de passe'
-    my: 'Mon compte'
-    logout: Déconnexion
-    login: Connexion
-    register: Inscription
-    welcome: 'Bienvenue dans votre compte'
-    loggedinas: 'Vous êtes connecté comme'
-    login.cta: 'Connectez-vous !'
-    signin: 'Se connecter'
-    username: 'Nom d''utilisateur'
-    password.updated: 'Votre mot de passe a été mis à jour'
-    password.incorrect: 'Le mot de passe actuel que vous avez tapé n''est pas correct'
-    password.change: 'Changer votre mot de passe'
-    signin.cta: 'Connectez-vous !'
-    password.current: 'Mot de passe actuel'
-    password.current.cta: 'Veuillez saisir votre mot de passe actuel'
-    password.new: 'Nouveau mot de passe'
-    password.new.cta: 'Veuillez saisir votre nouveau mot de passe'
-    password.new.confirm: 'Confirmez votre nouveau mot de passe'
-    password.new.confirm.cta: 'Veuillez confirmer votre nouveau mot de passe'
-    password.confirm: 'Confirmez votre mot de passe'
-    password.confirm.cta: 'Veuillez confirmer votre mot de passe'
+  password: 'Mot de passe'
+  my: 'Mon compte'
+  logout: Déconnexion
+  login: Connexion
+  register: Inscription
+  welcome: 'Bienvenue dans votre compte'
+  loggedinas: 'Vous êtes connecté comme'
+  login.cta: 'Connectez-vous !'
+  signin: 'Se connecter'
+  username: 'Nom d''utilisateur'
+  password.updated: 'Votre mot de passe a été mis à jour'
+  password.incorrect: 'Le mot de passe actuel que vous avez tapé n''est pas correct'
+  password.change: 'Changer votre mot de passe'
+  signin.cta: 'Connectez-vous !'
+  password.current: 'Mot de passe actuel'
+  password.current.cta: 'Veuillez saisir votre mot de passe actuel'
+  password.new: 'Nouveau mot de passe'
+  password.new.cta: 'Veuillez saisir votre nouveau mot de passe'
+  password.new.confirm: 'Confirmez votre nouveau mot de passe'
+  password.new.confirm.cta: 'Veuillez confirmer votre nouveau mot de passe'
+  password.confirm: 'Confirmez votre mot de passe'
+  password.confirm.cta: 'Veuillez confirmer votre mot de passe'
 welcome: Bienvenue
 home:
-    title: Accueil
+  title: 'Site d''administration DevJobs'
+  message: 'Veuillez vous connecter pour gérer vos offres d''emploi.'
+  message.admin: 'Cliquez sur Administration pour gérer le site web DevJobs. Dans le menu Mon compte, vous pouvez changer votre mot de passe.'
+  message.company: 'Cliquez sur Gérer vos offres d''emploi pour gérer les offres d''emploi de votre entreprise. Dans le menu Mon compte, vous pouvez changer votre mot de passe.'
 johndoe: jeandupont
 administration:
-    admin: Administration
-    company: 'Gérez vos offres d''emploi'
+  admin: Administration
+  company: 'Gérez vos offres d''emploi'
 easyadmin:
-    dashboard: 'Tableau de bord'
-    users: Utilisateurs
-    users.passwords: 'Mots de passe des utilisateurs'
-    companies: Sociétés
-    mycompany: 'Ma société'
-    admin: Admin
-    admin.message: 'Bienvenue sur la page d''administration de DevJobs. Veuillez choisir dans le menu à gauche.'
-    company: Société
-    username: 'Nom d''utilisateur'
-    user: Utilisateur
-    password: 'Mot de passe chiffré'
-    user.password: 'Mot de passe d''utilisateur'
-    roles: Rôles
-    company.message: 'Bienvenue sur la page d''administration des offres d''emploi de votre société. Veuillez choisir dans le menu à gauche.'
-    company.name: 'Nom de la société'
-    company.logo: Logo
-    company.logo.backgroundcolor: 'Couleur de fond du logo'
-    company.town: Ville
-    company.website: 'Site web'
-    company.contact.lastname: 'Nom du contact'
-    company.contact.firstname: 'Prénom du contact'
-    company.contact.email: 'Courriel du contact'
-    company.contact.phone: 'Téléphone du contact'
-    offers: Offres
-    myoffers: 'Mes offres'
-    offer: Offre
-    offer.title: Titre
-    offer.typeofcontract: 'Type de contrat'
-    offer.description: Description
-    offer.profile.description: 'Description du profil'
-    offer.competences: Compétences
-    offer.position.description: 'Description du poste'
-    offer.position.missions: Missions
-    candidates: Candidats
-    candidate: Candidat
-    candidate.firstname: Prénom
-    candidate.lastname: Nom
-    candidate.phone: Téléphone
-    candidate.email: Courriel
-    candidate.cv: CV
-    candidate.offer: Offre
-    offer.general: 'Informations générales'
-    offer.profile: Profil
-    offer.position: Poste
+  dashboard: 'Tableau de bord'
+  users: Utilisateurs
+  users.passwords: 'Mots de passe des utilisateurs'
+  companies: Sociétés
+  mycompany: 'Ma société'
+  admin: Admin
+  admin.message: 'Bienvenue sur la page d''administration de DevJobs. Veuillez choisir dans le menu à gauche.'
+  company: Société
+  username: 'Nom d''utilisateur'
+  user: Utilisateur
+  password: 'Mot de passe chiffré'
+  user.password: 'Mot de passe d''utilisateur'
+  roles: Rôles
+  company.message: 'Bienvenue sur la page d''administration des offres d''emploi de votre société. Veuillez choisir dans le menu à gauche.'
+  company.name: 'Nom de la société'
+  company.logo: Logo
+  company.logo.backgroundcolor: 'Couleur de fond du logo'
+  company.town: Ville
+  company.website: 'Site web'
+  company.contact.lastname: 'Nom du contact'
+  company.contact.firstname: 'Prénom du contact'
+  company.contact.email: 'Courriel du contact'
+  company.contact.phone: 'Téléphone du contact'
+  offers: Offres
+  myoffers: 'Mes offres'
+  offer: Offre
+  offer.title: Titre
+  offer.typeofcontract: 'Type de contrat'
+  offer.description: Description
+  offer.profile.description: 'Description du profil'
+  offer.competences: Compétences
+  offer.position.description: 'Description du poste'
+  offer.position.missions: Missions
+  candidates: Candidats
+  candidate: Candidat
+  candidate.firstname: Prénom
+  candidate.lastname: Nom
+  candidate.phone: Téléphone
+  candidate.email: Courriel
+  candidate.cv: CV
+  candidate.offer: Offre
+  offer.general: 'Informations générales'
+  offer.profile: Profil
+  offer.position: Poste
 Aucun(e): Aucun(e)
 Slug: Slug
-Full Time: 'Temps plein'
-Part Time: 'Temps partiel'
-Freelance: 'Freelance'
-Created At: 'Publié le'
-Updated At: 'Mis à jour à'
+'Full Time': 'Temps plein'
+'Part Time': 'Temps partiel'
+Freelance: Freelance
+'Created At': 'Publié le'
+'Updated At': 'Mis à jour à'
+offer:
+  colon: ' :'
+  createdat: 'Publié le'
+  requirements: Exigences
+  whatyouwilldo: 'Ce que vous ferez'
+  show: 'Basculer l''offre'
+candidate:
+  send: 'Envoyer la candidature'
+  success: 'Candidature envoyée'
+  success.message: 'Votre candidature a été envoyée avec succès'
