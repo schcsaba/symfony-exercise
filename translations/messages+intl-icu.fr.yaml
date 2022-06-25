@@ -24,7 +24,7 @@ account:
 welcome: Bienvenue
 home:
   title: 'Site d''administration DevJobs'
-  message: 'Veuillez vous connecter pour gérer vos offres d''emploi.'
+  message: 'Veuillez vous connecter pour gérer vos offres d''emploi ou créer un compte dans le menu Inscription.'
   message.admin: 'Cliquez sur Administration pour gérer le site web DevJobs. Dans le menu Mon compte, vous pouvez changer votre mot de passe.'
   message.company: 'Cliquez sur Gérer vos offres d''emploi pour gérer les offres d''emploi de votre entreprise. Dans le menu Mon compte, vous pouvez changer votre mot de passe.'
 johndoe: jeandupont

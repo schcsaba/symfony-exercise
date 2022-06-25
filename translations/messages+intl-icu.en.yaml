@@ -24,7 +24,7 @@ account:
 welcome: Welcome
 home:
   title: 'DevJobs Administration Site'
-  message: 'Please log in to manage your job offers.'
+  message: 'Please log in to manage your job offers or create an account in the Register menu.'
   message.admin: 'Click on Administration to manage the DevJobs website. In the My account menu you can change your password.'
   message.company: 'Click on Manage your job offers to manage the job offers of your company. In the My account menu you can change your password.'
 johndoe: johndoe

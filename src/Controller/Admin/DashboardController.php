@@ -43,5 +43,6 @@ class DashboardController extends AbstractDashboardController
         $message = $this->isGranted('ROLE_ADMIN') ? 'easyadmin.offers' : 'easyadmin.myoffers';
         yield MenuItem::linkToCrud(new TranslatableMessage($message), 'fas fa-terminal', Offer::class);
         yield MenuItem::linkToCrud(new TranslatableMessage('easyadmin.candidates'), 'fas fa-users', Candidate::class);
+        yield MenuItem::linkToRoute('account.my', 'fa fa-user-circle', 'profile_index');
     }
 }
