@@ -86,6 +86,10 @@ API web.
 
    `symfony console doctrine:schema:create --env=test`
 
+4. Exécutez les tests
+
+   `symfony php bin/phpunit`
+
 # devJobs
 
 **devJobs** is a backend project created with [Symfony](https://symfony.com/)
@@ -171,3 +175,7 @@ web API.
 3. Create the test database schema:
 
    `symfony console doctrine:schema:create --env=test`
+
+4. Run the tests
+
+    `symfony php bin/phpunit`
