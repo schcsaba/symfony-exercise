@@ -1,5 +1,7 @@
 # devJobs
 
+[Read in English](#devjobs-eng)
+
 **devJobs** est un projet backend réalisé avec [Symfony](https://symfony.com/)
 et [API Platform](https://api-platform.com/) pour que les entreprises puissent gérer leurs offres d'emploi et les rendre
 disponibles via une
@@ -90,7 +92,7 @@ API web.
 
    `symfony php bin/phpunit`
 
-# devJobs
+# devJobs {#devjobs-eng}
 
 **devJobs** is a backend project created with [Symfony](https://symfony.com/)
 and [API Platform](https://api-platform.com/) for companies to manage their job offers and make them available through a
