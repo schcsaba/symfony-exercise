@@ -44,7 +44,6 @@ final class CompanyFactory extends ModelFactory
     }
 
 
-
     protected function getDefaults(): array
     {
         $companyName = self::faker()->company();
@@ -78,7 +77,7 @@ final class CompanyFactory extends ModelFactory
     protected function initialize(): self
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
-        return $this->afterInstantiate(function(Company $company): void {
+        return $this->afterInstantiate(function (Company $company): void {
             unlink($this->tmpFile);
         });
     }

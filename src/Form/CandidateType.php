@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
 
 class CandidateType extends AbstractType
@@ -45,7 +46,18 @@ class CandidateType extends AbstractType
             ])
             ->add('cv', FileType::class, [
                 'label' => new TranslatableMessage('easyadmin.candidate.cv'),
-                'required' => true
+                'mapped' => false,
+                'required' => true,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => new TranslatableMessage('candidate.send')

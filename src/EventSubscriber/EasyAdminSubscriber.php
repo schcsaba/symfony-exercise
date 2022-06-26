@@ -69,9 +69,9 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         if (!($entity instanceof Company)) {
             return;
         }
-        $imgpath = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/' . $entity->getCompanyLogo();
-        if (file_exists($imgpath)) {
-            unlink($imgpath);
+        $imgPath = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/' . $entity->getCompanyLogo();
+        if (file_exists($imgPath)) {
+            unlink($imgPath);
         }
     }
 
@@ -103,9 +103,9 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         if (!($entity instanceof Candidate)) {
             return;
         }
-        $cvpath = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/' . $entity->getCv();
-        if (file_exists($cvpath)) {
-            unlink($cvpath);
+        $cvPath = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/' . $entity->getCv();
+        if (file_exists($cvPath)) {
+            unlink($cvPath);
         }
     }
 

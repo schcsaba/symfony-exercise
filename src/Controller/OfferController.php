@@ -9,6 +9,8 @@ use App\Repository\CandidateRepository;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,14 +40,20 @@ class OfferController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $candidate = $form->getData();
             $candidate->setOffer($offer);
-            $filename = random_int(1, 99999);
+            $filename = $this->getParameter('kernel.environment') === 'test' ? 'test_cv' : uuid_create();
             $directory = $this->parameterBag->get('kernel.project_dir') . '/public/uploads/';
-            $file = $form['cv']->getData();
+            /** @var UploadedFile $file */
+            $file = $form->get('cv')->getData();
             $extension = $file->guessExtension();
             if (!$extension) {
                 $extension = 'bin';
             }
-            $file->move($directory, $filename . '.' . $extension);
+            try {
+                $file->move($directory, $filename . '.' . $extension);
+            } catch (FileException $e) {
+                echo 'Exception Found - ' . $e->getMessage() . '<br/>';
+            }
+            $candidate->setCv($filename . '.' . $extension);
             $candidateRepository->add($candidate, true);
             return $this->redirectToRoute('candidate_success');
         }

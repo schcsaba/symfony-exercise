@@ -26,7 +26,8 @@ class AppFixtures extends Fixture
         $this->parameterBag = $parameterBag;
     }
 
-    protected function rmrf($dir) {
+    protected function rmrf($dir): void
+    {
         foreach (glob($dir) as $file) {
             if (is_dir($file)) {
                 $this->rmrf("$file/*");
