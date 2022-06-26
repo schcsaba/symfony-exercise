@@ -69,7 +69,7 @@ API web.
     - gérer vos offres d'emploi dans le menu *Gérer vos offres d'emploi*. Pour cela, vous devez d'abord créer une
       société dans le menu *Mon entreprise*.
 - En tant que candidat, vous pouvez postuler à une offre d'emploi sur la page de candidature de l'offre d'emploi. Le
-  modèle de l'URL de la page de candidature est le suivant : https://127.0.0.1:8000/<locale>/offre/<slug>. Le *local*
+  modèle de l'URL de la page de candidature est le suivant : https://127.0.0.1:8000/locale/offer/slug. Le *local*
   peut être *en* ou *fr*, le *slug* est le slug de l'offre d'emploi. Le slug est fourni dans l'API avec les autres
   données, afin que les pages de candidatures puissent être atteintes depuis un frontend.
 - Le site est disponible en anglais et en français. La langue peut être définie dans le menu supérieur.
@@ -158,7 +158,7 @@ web API.
     - manage your job offers in the *Manage your job offers* menu. For that you should create a company in the *My
       Company* menu first.
 - As a candidate, you can apply to a job offer on the application page of the job offer. The pattern of the application
-  page URL is the following: https://127.0.0.1:8000/<locale>/offer/<slug>. The *locale* can be *en* or *fr*, the *slug*
+  page URL is the following: https://127.0.0.1:8000/locale/offer/slug. The *locale* can be *en* or *fr*, the *slug*
   is the slug of the job offer. The slug is provided in the API together with the other data, so that the application
   pages can be reached from a frontend application.
 - The site is available in English and French. The language can be set in the top menu.
