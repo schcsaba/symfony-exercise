@@ -33,9 +33,9 @@ class OfferListingResourceTest extends ApiTestCase
             'company' => $company
         ]);
 
-        $imgpath = __DIR__ . '/../../public/uploads/' . $company->getCompanyLogo();
-        if (file_exists($imgpath)) {
-            unlink($imgpath);
+        $imgPath = __DIR__ . '/../../public/uploads/' . $company->getCompanyLogo();
+        if (file_exists($imgPath)) {
+            unlink($imgPath);
         }
 
         $client->request('GET', '/api/offers');
@@ -70,9 +70,9 @@ class OfferListingResourceTest extends ApiTestCase
         $company = CompanyFactory::new()->create();
         $offer = OfferFactory::new()->create();
 
-        $imgpath = __DIR__ . '/../../public/uploads/' . $company->getCompanyLogo();
-        if (file_exists($imgpath)) {
-            unlink($imgpath);
+        $imgPath = __DIR__ . '/../../public/uploads/' . $company->getCompanyLogo();
+        if (file_exists($imgPath)) {
+            unlink($imgPath);
         }
 
         $client->request('GET', '/api/offers/' . $offer->getId());
