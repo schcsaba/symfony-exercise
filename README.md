@@ -12,9 +12,7 @@ API web.
 - [PHP 7.4](https://www.php.net/downloads.php#v7.4.30)
 - [Composer](https://getcomposer.org/download/)
 - [Node.js](https://nodejs.org/)
-- Un serveur de base de données [MySQL](https://www.mysql.com/), [MariaDB](https://mariadb.org/)
-  , [PostgreSQL](https://www.postgresql.org/)
-  , [SQLite](https://www.sqlite.org/index.html) ou [Oracle](https://www.oracle.com/index.html)
+- Un serveur de base de données [MySQL](https://www.mysql.com/), [MariaDB](https://mariadb.org/), [PostgreSQL](https://www.postgresql.org/), [SQLite](https://www.sqlite.org/index.html) ou [Oracle](https://www.oracle.com/index.html)
 
 ## Installation
 
@@ -103,8 +101,7 @@ web API.
 - [PHP 7.4](https://www.php.net/downloads.php#v7.4.30)
 - [Composer](https://getcomposer.org/download/)
 - [Node.js](https://nodejs.org/)
-- A [MySQL](https://www.mysql.com/), [MariaDB](https://mariadb.org/), [PostgreSQL](https://www.postgresql.org/)
-  , [SQLite](https://www.sqlite.org/index.html) or [Oracle](https://www.oracle.com/index.html) database server
+- A [MySQL](https://www.mysql.com/), [MariaDB](https://mariadb.org/), [PostgreSQL](https://www.postgresql.org/), [SQLite](https://www.sqlite.org/index.html) or [Oracle](https://www.oracle.com/index.html) database server
 
 ## Installation
 
@@ -180,4 +177,4 @@ web API.
 
 4. Run the tests
 
-    `symfony php bin/phpunit`
+   `symfony php bin/phpunit`
