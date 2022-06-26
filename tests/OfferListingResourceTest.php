@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Functional;
+namespace App\Tests;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use App\Factory\CompanyFactory;
@@ -33,7 +33,7 @@ class OfferListingResourceTest extends ApiTestCase
             'company' => $company
         ]);
 
-        $imgPath = __DIR__ . '/../../public/uploads/' . $company->getCompanyLogo();
+        $imgPath = __DIR__ . '/../public/uploads/' . $company->getCompanyLogo();
         if (file_exists($imgPath)) {
             unlink($imgPath);
         }
@@ -70,7 +70,7 @@ class OfferListingResourceTest extends ApiTestCase
         $company = CompanyFactory::new()->create();
         $offer = OfferFactory::new()->create();
 
-        $imgPath = __DIR__ . '/../../public/uploads/' . $company->getCompanyLogo();
+        $imgPath = __DIR__ . '/../public/uploads/' . $company->getCompanyLogo();
         if (file_exists($imgPath)) {
             unlink($imgPath);
         }

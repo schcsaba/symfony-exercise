@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Application;
+namespace App\Tests;
 
 use App\Factory\CandidateFactory;
 use App\Factory\CompanyFactory;
@@ -19,7 +19,7 @@ class CandidateTest extends WebTestCase
         $offer = OfferFactory::new()->create();
         $candidate = CandidateFactory::new()->create();
         $uploadedFile = new UploadedFile(
-            __DIR__ . '/../../public/uploads/' . $candidate->getCv(),
+            __DIR__ . '/../public/uploads/' . $candidate->getCv(),
             'test_cv.pdf'
         );
         $candidateRepository = self::getContainer()->get(CandidateRepository::class);
@@ -41,17 +41,17 @@ class CandidateTest extends WebTestCase
         self::assertSame($candidate->getEmail(), $foundCandidate->getEmail());
         self::assertSame($candidate->getCv(), $foundCandidate->getCv());
 
-        $imgPath = __DIR__ . '/../../public/uploads/' . $company->getCompanyLogo();
+        $imgPath = __DIR__ . '/../public/uploads/' . $company->getCompanyLogo();
         if (file_exists($imgPath)) {
             unlink($imgPath);
         }
 
-        $cvPath = __DIR__ . '/../../public/uploads/' . $candidate->getCv();
+        $cvPath = __DIR__ . '/../public/uploads/' . $candidate->getCv();
         if (file_exists($cvPath)) {
             unlink($cvPath);
         }
 
-        $origCvPath = __DIR__ . '/../../public/uploads/' . $uploadedFile->getClientOriginalName();
+        $origCvPath = __DIR__ . '/../public/uploads/' . $uploadedFile->getClientOriginalName();
         if (file_exists($origCvPath)) {
             unlink($origCvPath);
         }
