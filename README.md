@@ -53,7 +53,7 @@ API web.
 
 10. Démarrer le serveur local :
 
-    `symfony server:start`.
+    `symfony server:start`
 
 11. Ouvrez le site à l'URL affichée dans le terminal (généralement https://127.0.0.1:8000)
 12. Cliquez sur le menu *Login*. Sur la page de connexion, vous pouvez vous connecter en tant qu'administrateur avec le
